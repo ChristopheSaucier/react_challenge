@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "../CSS/Button.css";
+import "../CSS/SelectionButton.css";
 
 const SelectionButton = ({ text = "", whenClicked, clickedState = false }) => {
+  //USED TO CHANGE THE CSS FOR THE SELECTION BUTTON TO BE EITHER SELECTED OR NOT
   let buttonClass = "selectButton";
   if (clickedState === text) {
     buttonClass = "selectedButton";

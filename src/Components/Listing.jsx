@@ -4,12 +4,15 @@ import ContentCard from "./ContentCard";
 import "../CSS/Listing.css";
 
 function Listing({ query = "/videos" }) {
+  //USED TO MAKE THE useFetch HOOK RUN WHEN SET
   const [needRender, setNeedRender] = useState(0);
   const startIndex = useRef(1);
   const videoStartIndex = useRef(1);
   const articleStartIndex = useRef(1);
 
+  //USED FOR INTERSECTION OBSERVER
   const observer = useRef();
+  //NUMBER OF ELEMENTS RETREIVED ON FETCH
   const count = 20;
 
   useEffect(() => {
@@ -42,8 +45,6 @@ function Listing({ query = "/videos" }) {
   );
 
   function renderMoreContent() {
-    console.log("RENDER MORE CONTENT");
-
     startIndex.current = startIndex.current + count;
     videoStartIndex.current = videoStartIndex.current + videosIncluded.current;
     articleStartIndex.current =
@@ -55,32 +56,27 @@ function Listing({ query = "/videos" }) {
   const lastElementRef = useCallback(
     (node) => {
       if (loading) return;
-      //console.log("ref triggered");
+
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore.current) {
           renderMoreContent();
         }
       });
+
       if (node) observer.current.observe(node);
     },
     [loading, hasMore]
   );
 
   let listingName = "listedContent";
-  //const animating = useRef(false)
+
   if (loading === true && processingNewQuery.current) {
-    console.log("ANIMATION");
     listingName = "listedContentFadeOut";
   } else {
     listingName = "listedContent";
   }
 
-  // if (loading === true && !articleData.length) {
-  //   console.log("LOADING");
-  //   return <div className="loader"></div>;
-  // } else {
-  console.log("RENDER CALLED");
   if (error) {
     return (
       <div className="fetchError">ERROR: FAILED TO FETCH RELEVANT DATA</div>

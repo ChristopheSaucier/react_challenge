@@ -18,21 +18,18 @@ export const useFetch = (
   const hasMore = useRef(false);
 
   useEffect(() => {
-    console.log("DATA RESET");
     processingNewQuery.current = true;
-    //setProcessingNewQuery(true);
   }, [query]);
 
   useEffect(() => {
     if (!query) return;
-    console.log(query);
 
     const fetchData = async () => {
       setLoading(true);
 
       //QUERY VIDEO AND ARTICLE DATA
       let fullQuery = query + "?startIndex=" + startIndex + "&count=" + count;
-      console.log(fullQuery);
+
       const response = await fetch(fullQuery);
       const data = await response.json();
 
@@ -51,25 +48,14 @@ export const useFetch = (
 
       if (processingNewQuery.current) {
         fetchedData.current = [...zippedData];
-        // setFetchedData(() => {
-        //   return [...zippedData];
-        // });
       } else {
         fetchedData.current = [...fetchedData.current, ...zippedData];
-        // setFetchedData((prev) => {
-        //   return [...prev, ...zippedData];
-        // });
       }
-
-      // setFetchedData((prev) => {
-      //   return [...prev, ...zippedData];
-      // });
 
       if (processingNewQuery.current) {
         processingNewQuery.current = false;
       }
 
-      //setHasMore(startIndex + 5 < 300);
       hasMore.current = startIndex + count < 300;
 
       setLoading(false);
@@ -86,22 +72,20 @@ export const useFetch = (
 
       const videoResponse = await fetch(videoQuery);
       const videoData = await videoResponse.json();
-      //console.log(videoData.data);
 
       const articleResponse = await fetch(articleQuery);
       const articleData = await articleResponse.json();
-      //console.log(articleData.data);
 
       let latestData = [...videoData.data, ...articleData.data];
-      //console.log(latestData);
+
       latestData.sort((a, b) =>
         a.metadata.publishDate < b.metadata.publishDate ? 1 : -1
       );
-      //console.log(latestData);
+
       let slicedLatestData = latestData.slice(0, count);
       let vidCount = 0;
       let artCount = 0;
-      //console.log(slicedLatestData);
+
       slicedLatestData.map((datum) => {
         if (datum.contentType === "video") {
           vidCount += 1;
@@ -112,8 +96,6 @@ export const useFetch = (
 
       videosIncluded.current = vidCount;
       articlesIncluded.current = artCount;
-      // setVideosIncluded(vidCount);
-      // setArticlesIncluded(artCount);
 
       //GET CONTENT IDS
       let contentID = slicedLatestData.map((datum) => {
@@ -130,14 +112,8 @@ export const useFetch = (
 
       if (processingNewQuery.current) {
         fetchedData.current = [...zippedData];
-        // setFetchedData(() => {
-        //   return [...zippedData];
-        // });
       } else {
         fetchedData.current = [...fetchedData.current, ...zippedData];
-        // setFetchedData((prev) => {
-        //   return [...prev, ...zippedData];
-        // });
       }
 
       if (processingNewQuery.current) {

@@ -4,15 +4,15 @@ import SelectionButton from "./SelectionButton";
 import "../CSS/TitlePage.css";
 
 function TitlePage() {
+  //UPDATES WHEN THE USER PRESSES ANY OF THE SELECTION BUTTONS
   const [endpoint, setEndpoint] = useState("/videos");
 
+  //DETERMINES WHICH SELECTION BUTTON TO HIGHLIGHT
   const selectedButton = useRef("Videos");
 
+  //RUNS WHEN ANY OF THE SELECTION BUTTONS ARE PRESSED
   function handleButtonPress(newEndpoint = "/videos", buttonType = "videos") {
-    //console.log("Button Pressed");
-
     selectedButton.current = buttonType;
-
     setEndpoint(newEndpoint);
   }
 
