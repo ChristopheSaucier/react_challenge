@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useRef } from "react";
 import Listing from "./Listing";
 import SelectionButton from "./SelectionButton";
 import "../CSS/TitlePage.css";

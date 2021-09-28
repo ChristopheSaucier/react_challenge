@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { zip } from "lodash/array";
 
 export const useFetch = (
@@ -28,7 +28,7 @@ export const useFetch = (
       setLoading(true);
 
       //QUERY VIDEO AND ARTICLE DATA
-      let fullQuery = query + "?startIndex=" + startIndex + "&count=" + count;
+      let fullQuery = query + `?startIndex=${startIndex}&count=${count}`;
 
       const response = await fetch(fullQuery);
       const data = await response.json();
@@ -38,8 +38,8 @@ export const useFetch = (
         return datum.contentId;
       });
 
-      //CREATE QUERY FOR RELEVANT COMMENT INFO BASED ON CONTENT IDS
-      let commentQuery = "/comments?ids={" + contentID + "}";
+      //CREATE QUERY FOR RELEVANT COMMENT INFO BASED ON CONTENT IDS (THE NUMBER OF COMMENTS ARE GENERATED AT RANDOM BY THE API)
+      let commentQuery = `/comments?ids={${contentID}}`;
       const commentResponse = await fetch(commentQuery);
       const commentData = await commentResponse.json();
 
@@ -47,7 +47,7 @@ export const useFetch = (
       const zippedData = zip(commentData.content, data.data);
 
       if (processingNewQuery.current) {
-        fetchedData.current = [...zippedData];
+        fetchedData.current = zippedData;
       } else {
         fetchedData.current = [...fetchedData.current, ...zippedData];
       }
@@ -65,10 +65,8 @@ export const useFetch = (
       setLoading(true);
 
       //QUERY VIDEO AND ARTICLE DATA
-      let videoQuery =
-        "/videos" + "?startIndex=" + videoStartIndex + "&count=" + count;
-      let articleQuery =
-        "/articles" + "?startIndex=" + articleStartIndex + "&count=" + count;
+      let videoQuery = `/videos?startIndex=${videoStartIndex}&count=${count}`;
+      let articleQuery = `/articles?startIndex=${articleStartIndex}&count=${count}`;
 
       const videoResponse = await fetch(videoQuery);
       const videoData = await videoResponse.json();
@@ -102,8 +100,8 @@ export const useFetch = (
         return datum.contentId;
       });
 
-      //CREATE QUERY FOR RELEVANT COMMENT INFO BASED ON CONTENT IDS
-      let commentQuery = "/comments?ids={" + contentID + "}";
+      //CREATE QUERY FOR RELEVANT COMMENT INFO BASED ON CONTENT IDS (THE NUMBER OF COMMENTS ARE GENERATED AT RANDOM BY THE API)
+      let commentQuery = `/comments?ids={${contentID}}`;
       const commentResponse = await fetch(commentQuery);
       const commentData = await commentResponse.json();
 

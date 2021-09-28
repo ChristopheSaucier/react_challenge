@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../CSS/ContentCard.css";
 
 const ContentCard = ({ contentData = [] }) => {
@@ -23,11 +23,11 @@ const ContentCard = ({ contentData = [] }) => {
   if (coreData.contentType === "article") {
     //dealing with article
     contentText = coreData.metadata.headline;
-    contentURL = base + "articles/" + coreData.metadata.slug;
+    contentURL = `${base}articles/${coreData.metadata.slug}`;
   } else if (coreData.contentType === "video") {
     //dealing with videos
     contentText = coreData.metadata.title;
-    contentURL = base + "videos/" + coreData.metadata.slug;
+    contentURL = `${base}videos/${coreData.metadata.slug}`;
   } else {
     //should throw an error
     contentText = "ERROR: Issue obtaining title";

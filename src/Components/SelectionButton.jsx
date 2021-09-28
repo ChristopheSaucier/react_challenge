@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../CSS/SelectionButton.css";
 
 const SelectionButton = ({ text = "", whenClicked, clickedState = false }) => {
