@@ -1,0 +1,30 @@
+.titlePage {
+  margin: 30px;
+  min-width: 500px;
+  min-height: 500px;
+}
+
+.title {
+  font-size: 2.8em;
+  font-weight: 950;
+  border-bottom: 2px solid lightgrey;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+}
+
+.listing {
+  columns: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonArea {
+  display: flex;
+  flex-direction: column;
+  padding-right: 20px;
+  padding-top: 20px;
+}

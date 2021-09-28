@@ -1,0 +1,31 @@
+.listedContent {
+  opacity: 1;
+}
+
+.listedContentFadeOut {
+  -webkit-animation: fadeOut 1s linear; /* Safari */
+  animation: fadeOut 1s linear;
+}
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fetchError {
+  font-size: 2em;
+  color: red;
+}

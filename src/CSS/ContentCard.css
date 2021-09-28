@@ -1,0 +1,63 @@
+.subText {
+  margin: 10px;
+  font-size: 1em;
+  color: darkred;
+}
+
+.contentTextDiv {
+  margin: 10px;
+  max-width: 400px;
+}
+
+.contentTextAnchor {
+  color: black;
+  opacity: 1;
+  text-decoration: none;
+}
+
+.contentTextAnchor:hover {
+  color: black;
+  opacity: 0.6;
+  text-decoration: underline;
+}
+
+.contentImageDiv {
+  padding-right: 20px;
+}
+
+.contentImage {
+  opacity: 1;
+  border-radius: 2.5%;
+}
+
+.contentImage:hover {
+  opacity: 0.6;
+  border-radius: 2.5%;
+}
+
+.videoDuration {
+  z-index: 10;
+  position: relative;
+  top: -80px;
+  left: 10px;
+  height: 60px;
+  width: 90px;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 10%;
+  background-color: darkred;
+  color: white;
+  font-size: 1.2em;
+  margin-bottom: -60px;
+  text-align: center;
+  line-height: 60px;
+  pointer-events: none;
+}
+
+.videoDurationText {
+  text-align: center;
+}
+
+.contentImageAnchor {
+  text-decoration: none;
+}

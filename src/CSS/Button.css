@@ -1,0 +1,31 @@
+.selectButton {
+  font-size: 1.5em;
+  color: lightgrey;
+  background-color: white;
+  border: none;
+  opacity: 1;
+  transition: 0.3s;
+  width: 250px;
+  height: 50px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.selectButton:hover {
+  opacity: 1;
+  background-color: lightgrey;
+  color: grey;
+}
+
+.selectedButton {
+  font-size: 1.5em;
+  color: white;
+  background-color: darkred;
+  border: none;
+  opacity: 1;
+  transition: 0.3s;
+  width: 250px;
+  height: 50px;
+  border-radius: 5px;
+  font-weight: 500;
+}
